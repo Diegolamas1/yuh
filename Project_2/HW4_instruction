@@ -1,0 +1,47 @@
+
+## Task_1
+
+
+1. Put 20 images with chessboard  in same folder with the code for calibration
+2. Command to run: 
+	
+	## Run in Visual code
+	"python3 HW4_task1.py --type DICT_6X6_250 --camera True"
+	
+	## Run in Terminal
+	" rosrun Project2 HW4_task1.py --type DICT_6X6_250 --camera True"
+	
+	## Make sure the rosrun running by going to this folder and run "chmod +x HW_task1.py"
+	
+The marker that I gave you in type of "DICT_6X6_250" If you guys want to check the code in the lab.
+You should change the command to "--type DICT_4X4_50"
+
+3. The HW4_task1_2 run similar with the command as mentioned above. Basically, the alignment error present to for the different between the center of camera to the center of the marker. You guys can move the marker from left to right, to see change of alignment error. As I remember, the alignment error < 0 presents for the marker placed in left side of the image. 
+
+The distance separation is calcuated the estimated distance from camera to marker. I calculate it by d = sqrt(x^2 + y^2).
+If you want to check the topic: "rostopic list"
+
+The information of topics: "rostopic echo  /aligment_error"
+			    "rostopic echo /distance_separation"
+			       
+			    
+## Task 2:
+
+As I understood task 2. He wants us to subscribe the topic from task1_2. When the robot with camera put in a random position, it does not align to marker. (If it's aligned, the alginment error is ideal equal to 0). After we receive message from aligment error topic. He want us to turn the robot until this error is less then 3 degree.
+
+So I write a sample code running in simulation data to test this task.
+
+1. "roscore"
+"Ctrl + t" to open a new terminal
+2. "rosrun turtlesim turtlesim_node"
+"Ctrl + t"
+3. " rosrun Project_2 HW4_task1_2.py --type DICT_6X6_250 --camera True"
+Show the marker in front of the camera to get information first
+"Ctrl + t"
+4. "rosrun Projecte2 HW4_taks2.py"	## Condition to run the code is that the camera should succesful detect the marker.
+					## Otherwise It can not run.
+
+
+source ~/catkin_ws/devel/setup.bash
+
+rostopic echo /Alignment
